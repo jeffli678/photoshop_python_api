@@ -289,8 +289,8 @@ class Document(Core):
         """Saves the Document."""
         return self.activeDocument.Save()
 
-    def save_as(self, file_path, options, as_copy=False, ext=2):
-        return self.activeDocument.SaveAs(file_path, options.option, as_copy,
+    def saveAs(self, file_path, options, as_copy=False, ext=2):
+        return self.activeDocument.saveAs(file_path, options.option, as_copy,
                                           ext)
 
     def trim(self, *args, **kwargs):

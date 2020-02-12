@@ -11,10 +11,9 @@ https://photoshop-python-api.readthedocs.io
 Official javascript API docs:
 http://wwwimages.adobe.com/www.adobe.com/content/dam/acom/en/devnet/photoshop/pdfs/photoshop-cc-javascript-ref-2015.pdf
 
-Photoshop Scripting Reference:
-https://theiviaxx.github.io/photoshop-docs/Photoshop/index.html
 
 Has been tested and used Photoshop version:
+
     - cc2020
     - cc2019
     - cc2018
@@ -34,30 +33,33 @@ python setup.py install
 
 Hello World
 -----------
+Photoshop Scripting Reference:
+https://theiviaxx.github.io/photoshop-docs/Photoshop/index.html
 
 ```python
 
-from photoshop_python_api.application import Application
-from photoshop_python_api.save_options import JPEGSaveOptions
-from photoshop_python_api.solid_color import SolidColor
+from photoshop_python_api import Application
+from photoshop_python_api import JPEGSaveOptions
+from photoshop_python_api import SolidColor
 
 app = Application()
 app.documents.add(800, 500, 72, "Hello-World")
 doc = app.document
 new_doc = doc.artLayers.add()
-textColor = SolidColor()
-textColor.RGB.Red = 225
-textColor.RGB.Green = 0
-textColor.RGB.Blue = 0
-newTextLayer = new_doc
-newTextLayer.Kind = 2
-newTextLayer.TextItem.Contents = "Hello, World!"
-newTextLayer.TextItem.Position = [160, 167]
-newTextLayer.TextItem.Size = 36
-newTextLayer.TextItem.Color = textColor.option
+text_color = SolidColor()
+text_color.RGB.Red = 225
+text_color.RGB.Green = 0
+text_color.RGB.Blue = 0
+new_text_layer = new_doc
+new_text_layer.Kind = 2
+new_text_layer.TextItem.Contents = "Hello, World!"
+new_text_layer.TextItem.Position = [160, 167]
+new_text_layer.TextItem.Size = 36
+new_text_layer.TextItem.Color = text_color.option
 options = JPEGSaveOptions()
 # # save to jpg
 jpg = 'c:/hello_world.jpg'
-doc.save_as(jpg, options, as_copy=True)
+doc.saveAs(jpg, options, as_copy=True)
 app.eval_javascript('alert("save to jpg: {}")'.format(jpg))
+
 ```

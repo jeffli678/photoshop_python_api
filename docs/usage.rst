@@ -24,7 +24,7 @@ To read a file and write it back out again::
         options = JPEGSaveOptions()
         # # save to jpg
         jpg = 'c:/hello_world.jpg'
-        doc.save_as(jpg, options, as_copy=True)
+        doc.saveAs(jpg, options, as_copy=True)
         app.eval_javascript('alert("save to jpg: {}")'.format(jpg))
 
 
