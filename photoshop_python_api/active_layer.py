@@ -11,6 +11,6 @@ class ActiveLayer(Core):
         return self.active_layer.Typename
 
     def add(self):
-        self.ps.ActiveDocument.ArtLayers.Add()
+        self.adobe.ActiveDocument.ArtLayers.Add()
 
 

@@ -14,7 +14,7 @@ class Document(Core):
     @property
     def activeDocument(self):
         """The current active Document."""
-        return self.ps.ActiveDocument
+        return self.adobe.ActiveDocument
 
     @property
     def active_layer(self):
@@ -22,36 +22,36 @@ class Document(Core):
         return self.activeDocument.ActiveLayer
 
     @property
-    def art_layers(self):
+    def artLayers(self):
         return ArtLayers()
 
     @property
-    def active_channels(self):
+    def activeChannels(self):
         """The selected channels."""
-        return self.activeDocument.ActiveChannels
+        return self.activeDocument.activeChannels
 
     @property
     def active_history_brush_source(self):
         """The history state to use with the history brush."""
-        return self.activeDocument.ActiveHistoryBrushSource
+        return self.activeDocument.activeHistoryBrushSource
 
     @property
     def active_history_state(self):
         """The current history state for this Document."""
-        return self.activeDocument.ActiveHistoryState
+        return self.activeDocument.activeHistoryState
 
     @property
-    def background_layer(self):
+    def backgroundLayer(self):
         """The background layer for the Document."""
-        return self.activeDocument.BackgroundLayer
+        return self.activeDocument.backgroundLayer
 
     @property
-    def bits_per_channel(self):
+    def bitsPerChannel(self):
         """The number of bits per channel."""
-        return self.activeDocument.BitsPerChannel
+        return self.activeDocument.bitsPerChannel
 
     @property
-    def color_profile_name(self):
+    def colorProfileName(self):
         """The name of the color profile. Valid only when no value is specified
         for color profile kind (to indicate a custom color profile)."""
         return self.activeDocument.ColorProfileName

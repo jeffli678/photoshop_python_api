@@ -1,5 +1,5 @@
-from photoshop_python_api.application import Application
-from photoshop_python_api.save_options import JPEGSaveOptions
+from photoshop_python_api import Application
+from photoshop_python_api import JPEGSaveOptions
 
 MAX_THUMB_SIZE = 1280
 app = Application()
@@ -13,7 +13,7 @@ index = width_str / MAX_THUMB_SIZE
 thumb_width = int(width_str / index)
 
 thumb_height = int(height_str / index)
-print thumb_height, width_str
+print(thumb_height, width_str)
 
 thumb_doc = doc.duplicate(orig_name)
 thumb_doc.resize_image(thumb_width, thumb_height)

@@ -1,11 +1,21 @@
 photoshop_python_api
 ====================
+The API for using COM objects and interfaces of photoshop.
+
+More information about Component Object Model (COM):
+https://docs.microsoft.com/en-us/windows/desktop/com/component-object-model--com--portal
+
 
 https://photoshop-python-api.readthedocs.io
+
+Official javascript API docs:
 http://wwwimages.adobe.com/www.adobe.com/content/dam/acom/en/devnet/photoshop/pdfs/photoshop-cc-javascript-ref-2015.pdf
 
-Has been tested and used Photoshop version:
+Photoshop Scripting Reference:
+https://theiviaxx.github.io/photoshop-docs/Photoshop/index.html
 
+Has been tested and used Photoshop version:
+    - cc2020
     - cc2019
     - cc2018
     - cc2017
@@ -32,8 +42,9 @@ from photoshop_python_api.save_options import JPEGSaveOptions
 from photoshop_python_api.solid_color import SolidColor
 
 app = Application()
+app.documents.add(800, 500, 72, "Hello-World")
 doc = app.document
-new_doc = doc.art_layers.add()
+new_doc = doc.artLayers.add()
 textColor = SolidColor()
 textColor.RGB.Red = 225
 textColor.RGB.Green = 0

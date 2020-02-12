@@ -1,5 +1,6 @@
+# Import local modules
 from photoshop_python_api.basic_option import BasicOption
-from photoshop_python_api.core import Core
+from photoshop_python_api import Core
 
 
 class CMYKColor(BasicOption, Core):
@@ -11,20 +12,20 @@ class CMYKColor(BasicOption, Core):
             self.app = app
 
     @property
-    def Black(self):
-        return self.app.Black
+    def black(self):
+        return self.app.black
 
-    @Black.setter
-    def Black(self, value):
-        self.app.Black = value
+    @black.setter
+    def black(self, value):
+        self.app.black = value
 
     @property
-    def Cyan(self):
+    def cyan(self):
         return self.app.Cyan
 
-    @Cyan.setter
-    def Cyan(self, value):
-        self.app.Cyan = value
+    @cyan.setter
+    def cyan(self, value):
+        self.app.cyan = value
 
     @property
     def magenta(self):
@@ -35,13 +36,13 @@ class CMYKColor(BasicOption, Core):
         self.app.magenta = value
 
     @property
-    def Yellow(self):
+    def yellow(self):
         return self.app.HexValue
 
-    @Yellow.setter
-    def Yellow(self):
-        return self.app.Yellow
+    @yellow.setter
+    def yellow(self):
+        return self.app.yellow
 
-    @Yellow.getter
-    def Yellow(self):
-        return self.app.Yellow
+    @yellow.getter
+    def yellow(self):
+        return self.app.yellow

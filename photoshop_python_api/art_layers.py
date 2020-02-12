@@ -7,26 +7,26 @@ class ArtLayers(Core):
         super(ArtLayers, self).__init__()
 
     @property
-    def art_layers(self):
-        return self.ps.ActiveDocument.ArtLayers
+    def artLayers(self):
+        return self.adobe.activeDocument.artLayers
 
     @property
     def length(self):
-        return self.art_layers.length
+        return self.artLayers.length
 
     @property
     def parent(self):
-        return self.art_layers.parent
+        return self.artLayers.parent
 
     @property
     def typename(self):
-        return self.art_layers.Typename
+        return self.artLayers.Typename
 
     def add(self):
-        return self.art_layers.add()
+        return self.artLayers.add()
 
     def get_by_name(self, name):
-        return self.art_layers.getByName(name)
+        return self.artLayers.getByName(name)
 
     def remove_all(self):
-        return self.art_layers.RemoveAll()
+        return self.artLayers.removeAll()

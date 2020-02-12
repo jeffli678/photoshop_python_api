@@ -1,10 +1,11 @@
-from photoshop_python_api.application import Application
-from photoshop_python_api.save_options import JPEGSaveOptions
+from photoshop_python_api import Application
+from photoshop_python_api import JPEGSaveOptions
 from photoshop_python_api.solid_color import SolidColor
 
 app = Application()
+app.documents.add(800, 500, 72, "Hello-World")
 doc = app.document
-new_doc = doc.art_layers.add()
+new_doc = doc.artLayers.add()
 textColor = SolidColor()
 textColor.RGB.Red = 225
 textColor.RGB.Green = 0

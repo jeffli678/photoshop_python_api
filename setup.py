@@ -1,3 +1,5 @@
+"""Describe the distribution to distutils."""
+
 # Import third-party modules
 from setuptools import find_packages
 from setuptools import setup
@@ -18,7 +20,7 @@ setup(
     url='https://github.com/loonghao/photoshop_python_api',
     author=photoshop_python_api.__author__,
     version=photoshop_python_api.__version__,
-    author_email='hoolongvfx@gmail.com',
+    author_email='hal.long@outllok.com',
     classifiers=[
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',

@@ -12,36 +12,36 @@ class ActiveDocument(Core):
     @property
     def activeDocument(self):
         """The current active Document."""
-        return self.ps.ActiveDocument
+        return self.adobe.activeDocument
 
     @property
-    def active_layer(self):
+    def activeLayer(self):
         """The selected layer."""
-        return self.activeDocument.ActiveLayer
+        return self.activeDocument.activeLayer
 
     @property
-    def art_layers(self):
+    def artLayers(self):
         return ArtLayers()
 
     @property
-    def active_channels(self):
+    def activeChannels(self):
         """The selected channels."""
-        return self.activeDocument.ActiveChannels
+        return self.activeDocument.activeChannels
 
     @property
     def active_history_brush_source(self):
         """The history state to use with the history brush."""
-        return self.activeDocument.ActiveHistoryBrushSource
+        return self.activeDocument.activeHistoryBrushSource
 
     @property
     def active_history_state(self):
         """The current history state for this Document."""
-        return self.activeDocument.ActiveHistoryState
+        return self.activeDocument.activeHistoryState
 
     @property
     def background_layer(self):
         """The background layer for the Document."""
-        return self.activeDocument.BackgroundLayer
+        return self.activeDocument.backgroundLayer
 
     @property
     def bits_per_channel(self):

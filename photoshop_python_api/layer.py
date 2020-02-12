@@ -8,8 +8,8 @@ class Layer(Core):
 
     @property
     def active_layer(self):
-        print dir(self.ps.ActiveDocument)
-        return self.ps.ActiveDocument.ActiveLayer
+        print dir(self.adobe.ActiveDocument)
+        return self.adobe.ActiveDocument.ActiveLayer
 
     @property
     def all_locked(self):

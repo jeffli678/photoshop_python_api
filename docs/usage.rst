@@ -10,7 +10,7 @@ To read a file and write it back out again::
 
         app = Application()
         doc = app.document
-        new_doc = doc.art_layers.add()
+        new_doc = doc.artLayers.add()
         textColor = SolidColor()
         textColor.RGB.Red = 225
         textColor.RGB.Green = 0
