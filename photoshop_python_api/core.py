@@ -1,5 +1,9 @@
 # Import built-in modules
-import _winreg
+try:
+    import _winreg as winreg
+except ImportError:
+    import winreg
+
 import os
 from shutil import rmtree
 from tempfile import mkdtemp
@@ -20,31 +24,42 @@ class Core(object):
     title = 'Photoshop Python API'
 
     def __init__(self, ps_version=None):
+        # The photoshop version to COM progid mappings.
+        # You can use `regedit` and go to
+        # `Computer` > `HKEY_CLASSES_ROOT` > `Photoshop.Application` to find
+        # progid ID.
         self.mappings = {
-            '2019': '130',
-            '2018': '120',
-            '2017': '110',
-            'cs6': '60'
+            '2020': 140,
+            '2019': 130,
+            '2018': 120,
+            '2017': 110,
+            'cs6': 60
         }
         self.app = None
         self.version = os.getenv('PS_VERSION', ps_version)
         self.app_id = self.mappings.get(self.version,
                                         self._get_install_version())
         try:
-            self.ps = self.instance_app(self.app_id)
+            self.adobe = self.instance_app(self.app_id)
         except WindowsError:
             try:
-                self.ps = self.instance_app(self._get_install_version())
+                self.adobe = self.instance_app(self._get_install_version())
             except WindowsError:
                 raise PhotoshopPythonAPIError('Please check if you have '
                                               'Photoshop installed correctly.')
         self.__initialised = True
 
     def get_application_path(self):
-        key = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE,
+        key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
                               "{}\\{}".format(self.REG_PATH, self.app_id))
-        return _winreg.QueryValueEx(key, 'ApplicationPath')[
+        return winreg.QueryValueEx(key, 'ApplicationPath')[
                    0] + 'Photoshop'
+
+    def __getattribute__(self, item):
+        try:
+            return super(Core, self).__getattribute__(item)
+        except AttributeError:
+            return getattr(self.app, item)
 
     def instance_app(self, ps_id):
         names = [self._root]
@@ -62,9 +77,9 @@ class Core(object):
         return self._create_object(progress_id, dynamic=True)
 
     def _get_install_version(self):
-        key = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE,
+        key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
                               self.REG_PATH)
-        self.app_id = _winreg.EnumKey(key, 0).split('.')[0]
+        self.app_id = winreg.EnumKey(key, 0).split('.')[0]
         return self.app_id
 
     @staticmethod
@@ -76,10 +91,10 @@ class Core(object):
         return '.'.join(list_)
 
     def string_id_to_type_id(self, string):
-        return self.ps.stringIDToTypeID(string)
+        return self.adobe.stringIDToTypeID(string)
 
     def char_id_to_type_id(self, char):
-        return self.ps.charIDToTypeID(char)
+        return self.adobe.charIDToTypeID(char)
 
     @property
     def action_descriptor(self):
@@ -93,7 +108,7 @@ class Core(object):
         action.putPath(id61, jsx)
         id62 = self.char_id_to_type_id("jsMs")
         action.putString(id62, "null")
-        self.ps.executeAction(id60, action, 2)
+        self.adobe.executeAction(id60, action, 2)
 
     def eval_javascript(self, command):
         dir_ = mkdtemp(prefix='photoshop_python_api_')
