@@ -7,22 +7,21 @@ class Layer(Core):
         super(Layer, self).__init__()
 
     @property
-    def active_layer(self):
-        print dir(self.adobe.ActiveDocument)
-        return self.adobe.ActiveDocument.ActiveLayer
+    def activeLayer(self):
+        return self.adobe.activeDocument.activeLayer
 
     @property
-    def all_locked(self):
-        return self.active_layer.AllLocked
+    def allLocked(self):
+        return self.activeLayer.allLocked
 
     @property
-    def blend_mode(self):
-        return self.active_layer.BlendMode
+    def blendMode(self):
+        return self.activeLayer.blendMode
 
     @property
     def bounds(self):
-        return self.active_layer.bounds
+        return self.activeLayer.bounds
 
     @property
-    def BoundsNoEffects(self):
-        return self.active_layer.BoundsNoEffects
+    def boundsNoEffects(self):
+        return self.activeLayer.boundsNoEffects

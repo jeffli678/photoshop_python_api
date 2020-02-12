@@ -30,7 +30,7 @@ photoshop\_python\_api.active\_document module
 photoshop\_python\_api.active\_layer module
 -------------------------------------------
 
-.. automodule:: photoshop_python_api.active_layer
+.. automodule:: photoshop_python_api.activeLayer
     :members:
     :undoc-members:
     :show-inheritance:
