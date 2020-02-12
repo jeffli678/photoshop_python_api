@@ -1,0 +1,18 @@
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+
+# PyCharm project files
+.idea/
+
+# Vim / Notepad++ temp files
+*~
+
+# pip build output
+build/
+dist/
+
+# Coverage output
+.coverage
+
+# Documentation build folders.
+docs/_*
