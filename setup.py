@@ -13,6 +13,13 @@ LONG = ('photoshop_python_api is a python api that connects photoshop with '
         'COM. For more info check out the README at '
         '\'github.com/loonghao/photoshop_python_api\'.')
 
+
+def parse_requirements(filename):
+    with open(filename, 'r') as f:
+        for line in f:
+            yield line.strip()
+
+
 setup(
     name='photoshop_python_api',
     package_dir={'': '.'},
@@ -33,6 +40,6 @@ setup(
     ],
     description=SHORT,
     long_description=LONG,
-    install_requires=['comtypes'],
+    install_requires=list(parse_requirements('requirements.txt')),
     package_data={'': ['LICENSE']},
 )
